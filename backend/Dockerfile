@@ -42,5 +42,3 @@ WORKDIR /var/www/html/MySched_API_Laravel
 #El ficchero .env debería copiarse desde fuera del contenedor
 RUN cp .env.example .env
 RUN composer install
-RUN php artisan migrate:fresh --force
-RUN php artisan db:seed --force

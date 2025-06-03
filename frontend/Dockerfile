@@ -13,4 +13,5 @@ RUN npm run build
  
 # Production Stage
 FROM nginx:stable-alpine AS production
+COPY default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /MySched_React/dist /usr/share/nginx/html
