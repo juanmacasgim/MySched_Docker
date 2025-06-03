@@ -35,9 +35,6 @@ RUN sed -i 's#DocumentRoot /var/www/html#DocumentRoot /var/www/html/MySched_API_
 
 RUN a2enmod rewrite
 
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
 USER www-data
 RUN git clone https://github.com/juanmacasgim/MySched_API_Laravel.git
 WORKDIR /var/www/html/MySched_API_Laravel
@@ -45,5 +42,5 @@ WORKDIR /var/www/html/MySched_API_Laravel
 #El ficchero .env debería copiarse desde fuera del contenedor
 RUN cp .env.example .env
 RUN composer install
-
-ENTRYPOINT [ "/entrypoint.sh" ]
+RUN php artisan migrate:fresh --force
+RUN php artisan db:seed --force
