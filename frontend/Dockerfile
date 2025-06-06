@@ -6,6 +6,9 @@ RUN apk add --no-cache git
 RUN git clone https://github.com/juanmacasgim/MySched_React.git
 #RUN npm install -g vite
 WORKDIR /MySched_React
+
+COPY .env .
+
 #COPY vite-project/package*.json ./
 RUN npm install
 #COPY vite-project .
