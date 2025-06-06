@@ -8,8 +8,6 @@ services:
     environment:
       MYSQL_DATABASE: laravel
       MYSQL_ROOT_PASSWORD: root #cambiar a $MYSQL_ROOT_PASSWORD en .env por ejemplo
-    ports:
-      - "3306:3306"
     volumes:
       - mysqldata:/var/lib/mysql
     networks:
@@ -40,8 +38,6 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: mysched-api
-    ports:
-      - "${API_PORT}:80"
     depends_on:
       mysql:
         condition: service_healthy
